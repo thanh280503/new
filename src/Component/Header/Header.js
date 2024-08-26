@@ -1,6 +1,6 @@
-import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './Header.scss'
-const Header = () => {
+const Header = (props) => {
     return (
         <div className="header-homepage-container">
             <div className='container'>
