@@ -1,0 +1,39 @@
+.footer-container {
+    .footer-content {
+        background-color: rgb(243, 243, 243);
+        .information {
+            padding: 30px 0;
+            border-bottom: 1px solid rgb(204, 203, 203);
+            display: flex;
+            justify-content: space-between;
+            
+            .list {
+                list-style: none;
+                width: 100%;
+                margin-left: 100px;
+                .heading {
+                    h4 {
+                        font-size: 18px;
+                    }
+                }
+
+                .item {
+                    margin: 6px 0;
+                    color: rgb(118, 118, 118);
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        background-color: #fff;
+        margin: 25px 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        h3 {
+            font-size: 18px;
+        }
+    }
+}
