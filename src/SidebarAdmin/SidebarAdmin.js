@@ -3,7 +3,7 @@ import {
     NavLink
   } from "react-router-dom";
 
-const AdminFooter = () => {
+const SidebarAdmin = () => {
     return (
         <div className='side-bar'>
             <ul className='list'>
@@ -55,4 +55,4 @@ const AdminFooter = () => {
     )
 }
 
-export default AdminFooter
+export default SidebarAdmin
