@@ -1,4 +1,4 @@
-import { getAllDepartureAdminService, getAllDestinationAdminService, getAllTimeAdminService, searchTripsService } from "../../service/TripService"
+import { getAllDepartureAdminService, getAllDestinationAdminService, getAllTimeAdminService, searchTripsService } from "../../services/TripService"
 import actionTypes from "./actionTypes"
 
 
