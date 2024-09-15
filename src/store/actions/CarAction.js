@@ -1,4 +1,4 @@
-import { getAllStatusCarAdminService, getCarsStatusAdminService } from "../../service/CarService"
+import { getAllStatusCarAdminService,  } from "../../services/CarService"
 import actionTypes from "./actionTypes"
 
 
@@ -28,27 +28,3 @@ export const fetchStatusCarFailed = () => ({
 })
 
 
-export const getCarsStatus = (status) => {
-    return async (dispatch, getState) => {
-        try {
-            let res = await getCarsStatusAdminService(status)
-            if(res && res.status === 'OK') {
-                dispatch(fetchCarsStatusCarSuccess(res.data))
-            }else {
-                dispatch(fetcCarsStatusCarFailed())
-            }
-        } catch (error) {
-            dispatch(fetcCarsStatusCarFailed())
-            console.log('Error get all users: '. error);
-        }
-    }
-}
-
-export const fetchCarsStatusCarSuccess = (data) => ({
-    type: actionTypes.FETCH_CARS_STATUS_SUCCESS,
-    data: data
-})
-
-export const fetcCarsStatusCarFailed = () => ({
-    type: actionTypes.FETCH_CARS_STATUS_FAILED
-})

@@ -15,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
+        
       </Routes>
       <ToastContainer
         position="top-right"
