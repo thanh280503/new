@@ -8,6 +8,7 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './page/HomePage/HomePage';
+import Admin from './page/Admin/Admin';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
+        <Route path="/admin" element={<Admin />}></Route>
         
       </Routes>
       <ToastContainer
