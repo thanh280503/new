@@ -1,6 +1,6 @@
-import AdminHeader from '../../components/AdminHeader/AdminHeader'
-import AdminFooter from '../../components/AdminFooter/AdminFooter'
-import SidebarAdmin from '../../components/SidebarAdmin/SidebarAdmin'
+import AdminHeader from '../../Component/AdminHeader/AdminHeader'
+import AdminFooter from '../../Component/AdminFooter/AdminFooter'
+import SidebarAdmin from '../../Component/SidebarAdmin/SidebarAdmin'
 import './Admin.scss'
 
 const Admin = () => {
