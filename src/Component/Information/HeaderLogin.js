@@ -1,13 +1,19 @@
 import React from 'react'
 import './Login.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const HeaderLogin = () => {
+    const navigate = useNavigate()
+
+    const handleBackHomePage = () => {
+        navigate("/")
+    }
+
   return (
     <div className='header'>
         <div className='container'>
            <div className='content-login'>
-            <div className='left'>
+            <div className='left' onClick={() => handleBackHomePage()}>
                     <i className="fa-solid fa-car-side"></i>
                     <span>Vexe</span>
                 </div>

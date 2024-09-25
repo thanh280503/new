@@ -1,4 +1,4 @@
-import { getDetailUserService } from "../../service/UserService"
+import { getDetailUserService } from "../../services/UserService"
 import actionTypes from "./actionTypes"
 
 export const getDetailUser = (id, token) => {

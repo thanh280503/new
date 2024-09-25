@@ -3,7 +3,7 @@ import './Login.scss'
 import HeaderLogin from './HeaderLogin'
 import AdminFooter from '../AdminFooter/AdminFooter'
 import { useState } from 'react'
-import { loginUserService } from '../../service/UserService'
+import { loginUserService } from '../../services/UserService'
 import jwt_decode from "jwt-decode";
 import { toast } from 'react-toastify'
 import * as actions from '../../store/actions'
@@ -48,7 +48,7 @@ const Login = (props) => {
                 }
             }
 
-            if(props.detailUser.isAdmin) {
+            if(props.detailUser?.isUser === "Admin") {
                 navigate("/admin")
             }else {
                 navigate("/")

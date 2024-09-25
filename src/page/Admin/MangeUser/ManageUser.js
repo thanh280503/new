@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import AdminFooter from '../../../components/AdminFooter/AdminFooter'
-import AdminHeader from '../../../components/AdminHeader/AdminHeader'
-import SidebarAdmin from '../../../components/SidebarAdmin/SidebarAdmin'
+import AdminFooter from '../../../Component/AdminFooter/AdminFooter'
+import AdminHeader from '../../../Component/AdminHeader/AdminHeader'
+import SidebarAdmin from '../../../Component/SidebarAdmin/SidebarAdmin'
 import { createNewUserAdminService, 
         deleteUserAdminService, 
         getAllUserAdminService,
         updateUserAdminService 
-    } from '../../../service/UserService'
+    } from '../../../services/UserService'
 import './ManageUser.scss'
-import Panigation from '../../../components/Panigation/Panigation'
+import Panigation from '../../../Component/Panigation/Panigation'
 import {Modal, Button} from 'react-bootstrap';
 import { toast } from 'react-toastify'
 

@@ -3,7 +3,7 @@ import './Register.scss'
 import HeaderLogin from './HeaderLogin'
 import AdminFooter from '../AdminFooter/AdminFooter'
 import { toast } from 'react-toastify'
-import { registerUserService } from '../../service/UserService'
+import { registerUserService } from '../../services/UserService'
 import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
@@ -40,9 +40,11 @@ const Register = () => {
             confirmPassword,
             name
         }
+        console.log("user: ", user);
 
         let res = await registerUserService(user)
-
+        console.log("res: ", res);
+        
         if(res && res.status === 'OK') {
             toast.success("Xác thực email bạn nhé!")
             setNewUser({})
