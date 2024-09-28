@@ -1,9 +1,9 @@
 import './ManageTrip.scss'
-import AdminFooter from '../../../components/AdminFooter/AdminFooter'
-import AdminHeader from '../../../components/AdminHeader/AdminHeader'
-import SidebarAdmin from '../../../components/SidebarAdmin/SidebarAdmin'
+import AdminFooter from '../../../Component/AdminFooter/AdminFooter'
+import AdminHeader from '../../../Component/AdminHeader/AdminHeader'
+import SidebarAdmin from '../../../Component/SidebarAdmin/SidebarAdmin'
 import { useState, useEffect } from 'react'
-import { deleteTripAdminService, getAllTripAdminService, updateTripAdminService } from '../../../service/TripService'
+import { deleteTripAdminService, getAllTripAdminService, updateTripAdminService } from '../../../services/TripService'
 import { useNavigate } from 'react-router-dom'
 import {Modal, Button} from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker'
@@ -47,7 +47,7 @@ const ManageTrip = (props) => {
     }
 
     const getCars = async () => {
-        await props.getCarsStatus('650ba7679b97f144d2cdbe41')
+        await props.getCarsStatus('66f7bba9c66446792a513849')
     }
 
     const getAllTrip = async () => {
@@ -196,9 +196,9 @@ const ManageTrip = (props) => {
             <AdminFooter />
 
             {/* update */}
-            <Modal show={showUpdate} onHide={handleCloseUpdate} >
+            <Modal className='modal-update' show={showUpdate} onHide={handleCloseUpdate} >
                 <Modal.Header closeButton>
-                <Modal.Title>Cập nhật người dùng</Modal.Title>
+                <Modal.Title>Cập nhật chuyến đi</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <div className="row">

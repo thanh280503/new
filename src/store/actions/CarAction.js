@@ -5,7 +5,6 @@ export const getAllStatusCar = () => {
   return async (dispatch, getState) => {
     try {
       let res = await getAllStatusCarAdminService();
-      console.log('res-getAllStatusCar ', res);
       if (res && res.status === 'OK') {
         dispatch(fetchAllStatusCarSuccess(res.data));
       } else {

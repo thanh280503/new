@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import AdminFooter from '../../../../components/AdminFooter/AdminFooter'
-import AdminHeader from '../../../../components/AdminHeader/AdminHeader'
-import SidebarAdmin from '../../../../components/SidebarAdmin/SidebarAdmin'
+import AdminFooter from '../../../../Component/AdminFooter/AdminFooter'
+import AdminHeader from '../../../../Component/AdminHeader/AdminHeader'
+import SidebarAdmin from '../../../../Component/SidebarAdmin/SidebarAdmin'
 import { connect } from "react-redux"
 import * as actions from '../../../../store/actions'
 import './CreateTrip.scss'
@@ -10,13 +10,15 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import ReactDatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
-import { addNewTripAdminService } from '../../../../service/TripService'
+import { addNewTripAdminService } from '../../../../services/TripService'
 import moment from 'moment'
 
 const CreateTrip = (props) => {
     const [newTrip, setNewTrip] = useState({})
     const navigation = useNavigate()
     const [startDate, setStartDate] = useState(new Date());
+
+    
 
     const handleBack = () => {
         navigation("/admin/manage-trip")

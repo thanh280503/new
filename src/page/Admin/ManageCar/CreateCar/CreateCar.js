@@ -34,7 +34,6 @@ const CreateCar = (props) => {
   };
 
   const onChangeSelectStatus = (e) => {
-    console.log('status: e.target.value', e.target.value);
     setNewCar({ ...newCar, status: e.target.value });
   };
 
@@ -50,8 +49,12 @@ const CreateCar = (props) => {
     let formData = new FormData();
     Object.keys(newCar).forEach((key) => formData.append(key, newCar[key]));
 
+    console.log("formData: ",formData);
+    
     const res = await createNewCarAdminService(formData);
 
+    console.log("res: ", res);
+    
     if (res && res.status === 'OK') {
       toast.success('Tạo mới xe thành công');
       setNewCar({
