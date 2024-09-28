@@ -4,6 +4,9 @@ const getAllCarAdminService = (page) => {
   return axios.get(`/car/get-all-car?page=${page}`);
 };
 
+const getCarsStatusAdminService = (status) => {
+  return axios.get(`/car/get-cars-status?status=${status}`);
+};
 
 const createNewCarAdminService = (car) => {
   return axios.post(`/car/create-car`, car);
@@ -27,4 +30,5 @@ export {
   updateCarAdminService,
   deleteCarAdminService,
   getAllStatusCarAdminService,
+  getCarsStatusAdminService,
 };

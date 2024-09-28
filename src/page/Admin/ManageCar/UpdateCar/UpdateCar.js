@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import './UpdateCar.scss';
 import AdminFooter from '../../../../Component/AdminFooter/AdminFooter';
 import AdminHeader from '../../../../Component/AdminHeader/AdminHeader';
 import SidebarAdmin from '../../../../Component/SidebarAdmin/SidebarAdmin';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../../../store/actions/CarAction';
-import './CreateCar.scss';
+import * as actions from '../../../../store/actions';
 import { toast } from 'react-toastify';
-import { createNewCarAdminService } from '../../../../services/CarService';
-import { useNavigate } from 'react-router-dom';
+import { updateCarAdminService } from '../../../../services/CarService';
 
-const CreateCar = (props) => {
-  const [newCar, setNewCar] = useState({
+const UpdateCar = (props) => {
+  const [car, setCar] = useState({
     name: '',
     type: '',
     numberOfSeats: '',
@@ -21,77 +21,46 @@ const CreateCar = (props) => {
     note: '',
     status: '',
   });
-
+  const [carCompare, setCarCompare] = useState();
   const [imagePreview, setImagePreview] = useState(null);
+  const location = useLocation();
   const navigation = useNavigate();
 
   useEffect(() => {
-    getStatusCars();
+    setCar(location?.state);
+    setCarCompare(location?.state);
   }, []);
 
-  const getStatusCars = async () => {
-    await props.getAllStatusCar();
-  };
-
   const onChangeSelectStatus = (e) => {
-    console.log('status: e.target.value', e.target.value);
-    setNewCar({ ...newCar, status: e.target.value });
+    setCar({ ...car, status: e.target.value });
   };
 
-  const onClickAddNewCar = async () => {
-    let { name, type, numberOfSeats, color, yearOfManufacture, licensePlate, image, note, status } =
-      newCar;
-
-    if (!name || !type || !numberOfSeats || !color || !licensePlate || !image || !status) {
-      toast.error('Bạn chưa điền đầy đủ thông tin!');
-      return;
-    }
-
-    let formData = new FormData();
-    Object.keys(newCar).forEach((key) => formData.append(key, newCar[key]));
-
-    const res = await createNewCarAdminService(formData);
-
-    if (res && res.status === 'OK') {
-      toast.success('Tạo mới xe thành công');
-      setNewCar({
-        name: '',
-        type: '',
-        numberOfSeats: '',
-        color: '',
-        yearOfManufacture: '',
-        licensePlate: '',
-        image: null,
-        note: '',
-        status: '',
-      });
-      setImagePreview(null);
-      // navigation("/admin/manage-car")
+  const onClickUpdateCar = async () => {
+    if (car !== carCompare) {
+      let res = await updateCarAdminService();
     } else {
-      toast.error('Tạo xe thất bại');
+      toast.error('Bạn chưa thay đổi gì!');
     }
   };
 
   const handleBack = () => {
     navigation('/admin/manage-car');
   };
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setNewCar({ ...newCar, image: file });
+      setCar({ ...car, image: file });
       setImagePreview(URL.createObjectURL(file));
     }
   };
-
   return (
-    <div className='container-create-car'>
+    <div className='container-update-car'>
       <AdminHeader />
       <div className='content'>
         <SidebarAdmin />
         <div className='right'>
           <div className='top'>
-            <h3>Thêm xe</h3>
+            <h3>Cập nhật xe</h3>
             <button className='btn btn-primary col-2 mx-3 my-3' onClick={() => handleBack()}>
               {'<-- Quay lại'}
             </button>
@@ -107,8 +76,8 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.name}
-                  onChange={(e) => setNewCar({ ...newCar, name: e.target.value })}
+                  value={car?.name}
+                  onChange={(e) => setCar({ ...car, name: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4'>
@@ -120,8 +89,8 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.type}
-                  onChange={(e) => setNewCar({ ...newCar, type: e.target.value })}
+                  value={car?.type}
+                  onChange={(e) => setCar({ ...car, type: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4'>
@@ -133,8 +102,8 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.numberOfSeats}
-                  onChange={(e) => setNewCar({ ...newCar, numberOfSeats: e.target.value })}
+                  value={car?.numberOfSeats}
+                  onChange={(e) => setCar({ ...car, numberOfSeats: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4'>
@@ -146,8 +115,8 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.color}
-                  onChange={(e) => setNewCar({ ...newCar, color: e.target.value })}
+                  value={car?.color}
+                  onChange={(e) => setCar({ ...car, color: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4'>
@@ -159,8 +128,8 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.yearOfManufacture}
-                  onChange={(e) => setNewCar({ ...newCar, yearOfManufacture: e.target.value })}
+                  value={car?.yearOfManufacture}
+                  onChange={(e) => setCar({ ...car, yearOfManufacture: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4'>
@@ -172,15 +141,15 @@ const CreateCar = (props) => {
                   className='form-control'
                   id='exampleFormControlInput1'
                   placeholder='...'
-                  value={newCar.licensePlate}
-                  onChange={(e) => setNewCar({ ...newCar, licensePlate: e.target.value })}
+                  value={car?.licensePlate}
+                  onChange={(e) => setCar({ ...car, licensePlate: e.target.value })}
                 />
               </div>
               <div className='mb-3 col-4 status'>
                 <label htmlFor='exampleFormControlInput1' className='form-label'>
                   Trạng thái
                 </label>
-                <select onChange={(e) => onChangeSelectStatus(e)} value={newCar.status}>
+                <select onChange={(e) => onChangeSelectStatus(e)}>
                   <option value={''}>Chọn trạng thái</option>
                   {props.statusCar &&
                     props.statusCar.length > 0 &&
@@ -214,15 +183,14 @@ const CreateCar = (props) => {
                   name='Text1'
                   rows='4'
                   style={{ width: '100%' }}
-                  value={newCar.note}
-                  onChange={(e) => setNewCar({ ...newCar, note: e.target.value })}
+                  onChange={(e) => setCar({ ...car, note: e.target.value })}
                 ></textarea>
               </div>
               <button
-                className='btn btn-primary col-2 mx-3 my-3'
-                onClick={() => onClickAddNewCar()}
+                className='btn btn-warning col-2 mx-3 my-3'
+                onClick={() => onClickUpdateCar()}
               >
-                + Thêm mới
+                Cập nhật
               </button>
             </div>
           </div>
@@ -245,4 +213,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCar);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateCar);
