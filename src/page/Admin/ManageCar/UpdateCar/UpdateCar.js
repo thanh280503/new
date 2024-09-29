@@ -10,6 +10,8 @@ import { toast } from 'react-toastify';
 import { updateCarAdminService } from '../../../../services/CarService';
 
 const UpdateCar = (props) => {
+  const location = useLocation();
+  const idCar = location.state._id;
   const [car, setCar] = useState({
     name: '',
     type: '',
@@ -17,13 +19,13 @@ const UpdateCar = (props) => {
     color: '',
     yearOfManufacture: '',
     licensePlate: '',
-    image: null,
+    image: '',
     note: '',
     status: '',
   });
+  console.log('Car:', location.state);
   const [carCompare, setCarCompare] = useState();
-  const [imagePreview, setImagePreview] = useState(null);
-  const location = useLocation();
+  const [imagePreview, setImagePreview] = useState(`${location.state.image}`);
   const navigation = useNavigate();
 
   useEffect(() => {
@@ -36,11 +38,16 @@ const UpdateCar = (props) => {
   };
 
   const onClickUpdateCar = async () => {
-    if (car !== carCompare) {
-      let res = await updateCarAdminService();
-    } else {
-      toast.error('Bạn chưa thay đổi gì!');
+    // if (car !== carCompare) {
+    let res = await updateCarAdminService(idCar, car);
+    if (res && res === 'OK') {
+      toast.success('Cập nhật thành công');
+      return;
     }
+    // } else {
+    //   toast.error('Bạn chưa thay đổi gì!');
+    //   return;
+    // }
   };
 
   const handleBack = () => {

@@ -12,8 +12,8 @@ const createNewCarAdminService = (car) => {
   return axios.post(`/car/create-car`, car);
 };
 
-const updateCarAdminService = (car) => {
-  return axios.post(`/car/update-car`, car);
+const updateCarAdminService = (idCar, car) => {
+  return axios.post(`/car/update-car/${idCar}`, car);
 };
 
 const deleteCarAdminService = (id) => {

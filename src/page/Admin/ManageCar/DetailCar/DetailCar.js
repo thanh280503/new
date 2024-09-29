@@ -6,10 +6,9 @@ import SidebarAdmin from '../../../../Component/SidebarAdmin/SidebarAdmin';
 import { useState, useEffect } from 'react';
 
 const DetailCar = () => {
-  const [car, setCar] = useState({});
-
   const location = useLocation();
   const navigation = useNavigate();
+  const [car, setCar] = useState({});
 
   useEffect(() => {
     setCar(location?.state);
@@ -60,7 +59,11 @@ const DetailCar = () => {
                   </div>
                   <div className='item'>
                     <label>Trạng thái:</label>
-                    <p>{car?.status?.value}</p>
+                    <p>{}</p>
+                  </div>
+                  <div className='item'>
+                    <label>Biển số xe:</label>
+                    <p>{car?.licensePlate}</p>
                   </div>
                   <div className='item'>
                     <label>Ghi chú:</label>
