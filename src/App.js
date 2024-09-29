@@ -15,6 +15,7 @@ import CreateTrip from './page/Admin/ManageTrip/CreateTrip/CreateTrip';
 import TripDetail from './page/Admin/ManageTrip/TripDetail/TripDetail';
 import ManageTrip from './page/Admin/ManageTrip/ManageTrip';
 import Trips from './page/Trips/Trips';
+import Profile from './Component/Profile/Profile';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path="/trips" element={<Trips />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
 
         <Route path='/admin' element={<Admin />}></Route>
         <Route path='/admin/manage-user' element={<ManageUser />}></Route>
