@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import './Profile.scss'
 import * as actions from '../../store/actions'
 import { connect } from "react-redux"
-import { updatePasswordService, updateUserAdminService } from '../../service/UserService'
+import { updatePasswordService, updateUserAdminService } from '../../services/UserService'
 import { toast } from 'react-toastify'
 import { Button, Modal } from 'react-bootstrap'
 
