@@ -8,8 +8,8 @@ const createDriverAdminService = (driver) => {
   return axios.post(`/driver/create-driver`, driver);
 };
 
-const updateDriverAdminService = (driver) => {
-  return axios.post(`/driver/update-driver`, driver);
+const updateDriverAdminService = (id, driver, fileImage) => {
+  return axios.post(`/driver/update-driver/${id}`, driver, fileImage);
 };
 
 const deleteDriverAdminService = (id) => {
