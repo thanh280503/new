@@ -14,6 +14,7 @@ import UpdateCar from './page/Admin/ManageCar/UpdateCar/UpdateCar';
 import CreateTrip from './page/Admin/ManageTrip/CreateTrip/CreateTrip';
 import TripDetail from './page/Admin/ManageTrip/TripDetail/TripDetail';
 import ManageTrip from './page/Admin/ManageTrip/ManageTrip';
+import Trips from './page/Trips/Trips';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/' element={<HomePage />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
+        <Route path="/trips" element={<Trips />}></Route>
 
         <Route path='/admin' element={<Admin />}></Route>
         <Route path='/admin/manage-user' element={<ManageUser />}></Route>

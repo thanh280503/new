@@ -93,7 +93,43 @@
                 }   
             }
 
-            
+            .user {
+                cursor: pointer;
+                position: relative;
+                i {
+                    margin-right: 5px;
+                    border-radius: 50%;
+                    border: 1px solid black;
+                    padding: 4px;
+                    font-size: 15px;
+                }
+
+                &:hover {
+                    .drop {
+                        visibility: visible;
+                    }
+                }
+                .drop {
+
+                    position: absolute;
+                    background-color: white;
+                    display: flex;
+                    visibility: hidden;
+                    flex-direction: column;
+                    z-index: 5;
+                    width: 120px;
+                    font-size: 14px;
+                    border-radius: 3px;
+                    padding: 6px;
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+                    span {
+                        &:hover {
+                            color: #2377ed;
+                        }
+                    }
+                }
+            }
         }
     }
 }

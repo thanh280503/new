@@ -45,6 +45,9 @@ const loginUserSuccess = (id, tokenLogin) => {
   return axios.post(`/auth/login-success`, {id, tokenLogin}) 
 }
 
+const logoutUserService =  () => {
+  return axios.post(`/user/logout-user`) 
+}
 
 
 export {
@@ -56,5 +59,6 @@ export {
   getDetailUserService,
   updatePasswordService,
   loginUserSuccess,
+  logoutUserService,
   loginUserService
 };

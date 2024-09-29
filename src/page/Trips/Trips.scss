@@ -1,0 +1,122 @@
+.trip-content {
+    background: rgb(242, 242, 242);
+    .search-trip {
+        padding-top: 35px;
+    }
+
+    .content {
+        display: flex;
+        padding: 0 230px;
+        margin-top: 15px;
+        .filter {
+            background-color: white;
+            border-radius: 6px;
+            width: 265px;
+            height: auto;
+            padding: 15px;
+
+            .list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                
+                input {
+                    margin-right: 6px;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .wrapper {
+            width: 100%;
+            
+            .item {
+                display: flex;
+                background-color: white;
+                margin-left: 15px;
+                margin-bottom: 15px;
+                padding: 15px;
+                border-radius: 6px;
+                width: 100%;
+                img {
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                    border-radius: 3px;
+                }
+    
+                .right {
+                    margin-left: 10px;
+                    width: 100%;
+                    .first {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 4px;
+                        .name {
+                            font-size: 20px;
+                            font-weight: 500;
+                        }
+    
+                        .price {
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: rgb(36, 116, 229);
+                        }
+                    }
+    
+                    .departure {
+                        margin: 6px 0;
+                    }
+    
+                    .submit {
+                        float: right;
+                        span {
+                            font-weight: 500;
+                            margin-right: 10px;
+                            margin-top: 4px;
+                            &:hover {
+                                color: rgb(36, 116, 229);
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+.form {
+    .quanlity-book {
+        display: flex;
+        label {
+            border: 1px solid gray;
+            padding: 0 8px;
+            height: 28px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    }
+    
+    .item {
+        display: flex;
+        flex-direction: column;
+        .first {
+            font-weight: 500;
+        }
+
+        .price {
+            font-weight: 500;
+            color: rgb(36, 116, 229);
+        }
+    }
+    
+    
+}
+.no-data {
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}

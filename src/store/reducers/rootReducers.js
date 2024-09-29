@@ -4,6 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import TripReducers from './TripReducers';
 import CarReducers from './CarReducers';
+import UserReducers from "./UserReducers";
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducers = combineReducers({
   trips: TripReducers,
   cars: CarReducers,
+  users: UserReducers
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
