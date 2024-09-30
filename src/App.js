@@ -16,6 +16,10 @@ import TripDetail from './page/Admin/ManageTrip/TripDetail/TripDetail';
 import ManageTrip from './page/Admin/ManageTrip/ManageTrip';
 import Trips from './page/Trips/Trips';
 import Profile from './Component/Profile/Profile';
+import CreateDriver from './page/Admin/ManageDriver/CreateDriver/CreateDriver';
+import DetailDriver from './page/Admin/ManageDriver/DetailDriver/DetailDriver';
+import ManageDriver from './page/Admin/ManageDriver/ManageDriver';
+import UpdateDriver from './page/Admin/ManageDriver/UpdateDriver/UpdateDriver';
 
 function App() {
   return (
@@ -24,8 +28,8 @@ function App() {
         <Route exact path='/' element={<HomePage />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
-        <Route path="/trips" element={<Trips />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path='/trips' element={<Trips />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
 
         <Route path='/admin' element={<Admin />}></Route>
         <Route path='/admin/manage-user' element={<ManageUser />}></Route>
@@ -33,10 +37,15 @@ function App() {
         <Route path='/admin/manage-car/create' element={<CreateCar />}></Route>
         <Route path='/admin/manage-car/detail' element={<DetailCar />}></Route>
         <Route path='/admin/manage-car/update' element={<UpdateCar />}></Route>
-        <Route path="/admin/manage-trip" element={<ManageTrip />}></Route>
-        <Route path="/admin/manage-trip/detail" element={<TripDetail />}></Route>
-        <Route path="/admin/manage-trip/create" element={<CreateTrip />}></Route>
 
+        <Route path='/admin/manage-trip' element={<ManageTrip />}></Route>
+        <Route path='/admin/manage-trip/detail' element={<TripDetail />}></Route>
+        <Route path='/admin/manage-trip/create' element={<CreateTrip />}></Route>
+
+        <Route path='/admin/manage-driver' element={<ManageDriver />}></Route>
+        <Route path='/admin/manage-driver/create' element={<CreateDriver />}></Route>
+        <Route path='/admin/manage-driver/update' element={<UpdateDriver />}></Route>
+        <Route path='/admin/manage-driver/detail' element={<DetailDriver />}></Route>
       </Routes>
       <ToastContainer
         position='top-right'
