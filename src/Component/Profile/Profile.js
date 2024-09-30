@@ -4,30 +4,36 @@ import Header from '../Header/Header'
 import './Profile.scss'
 import * as actions from '../../store/actions'
 import { connect } from "react-redux"
-import { updatePasswordService, updateUserAdminService } from '../../services/UserService'
+import { getDetailUserClient, updatePasswordService, updateUserAdminService } from '../../services/UserService'
 import { toast } from 'react-toastify'
 import { Button, Modal } from 'react-bootstrap'
 
 const Profile = (props) => {
     const [user, setUser] = useState({})
+    const [userUpdate, setUserUpdate] = useState({})
     const [userCompare, setUserCompare] = useState({})
     const [avatar , setAvatar] = useState('')
     const [showModal, setShowModal] = useState(false)
     const [updatePassword, setUpdatePassword] = useState({})
 
     useEffect(() => {
-      if(props.detailUser) {
-        setUser(props.detailUser)
-      }
+      getDetailUser()
     }, [])
+
+    const getDetailUser = async () => {
+      let res = await getDetailUserClient(props.detailUser?.idUser)
+      
+      if(res && res.status === "OK") {
+        setUser(res?.data)
+      }
+    }
 
     const handleUpdateUser = async () => {
       if(user !== userCompare) {
         let formData = new FormData()
         Object.keys(user).forEach(key => formData.append(key, user[key]));
-
         let res = await updateUserAdminService(formData)
-
+        
         if(res && res.status === 'OK') {
           toast.success("Bạn đã cập nhật thành công!")
         }else {

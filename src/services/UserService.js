@@ -14,6 +14,10 @@ const updateUserAdminService = (user) => {
   return axios.post(`/user/update-user`, user);
 };
 
+const updateUserService = (user) => {
+  return axios.post(`/user/update-user-service`, user);
+};
+
 const deleteUserAdminService = (id) => {
   return axios.delete(`/user/delete-user/${id}`);
 };
@@ -30,6 +34,11 @@ const getDetailUserService = (id, access_token) => {
           token: `Bearer ${access_token}`
       }
   }
+  )
+}
+
+const getDetailUserClient = (id) => {
+  return axios.get(`/user/get-detail-user-client/${id}`
   )
 }
 
@@ -60,5 +69,7 @@ export {
   updatePasswordService,
   loginUserSuccess,
   logoutUserService,
-  loginUserService
+  loginUserService,
+  getDetailUserClient,
+  updateUserService
 };

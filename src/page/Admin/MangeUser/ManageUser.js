@@ -5,7 +5,8 @@ import SidebarAdmin from '../../../Component/SidebarAdmin/SidebarAdmin'
 import { createNewUserAdminService, 
         deleteUserAdminService, 
         getAllUserAdminService,
-        updateUserAdminService 
+        updateUserAdminService, 
+        updateUserService
     } from '../../../services/UserService'
 import './ManageUser.scss'
 import Panigation from '../../../Component/Panigation/Panigation'
@@ -106,7 +107,7 @@ const ManageUser = () => {
 
     const handleUpdateUser = async () => {
         if(userUpdate !== userCompare) {
-            let res = await updateUserAdminService(userUpdate)
+            let res = await updateUserService(userUpdate)
 
             if(res && res.status === 'OK') {
                 toast.success("Bạn đã cập nhật thành công!")
