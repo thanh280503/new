@@ -70,8 +70,11 @@ const Trips = (props) => {
             user: props.idUser,
             payment: payment,
         }
+        console.log("ticket: ", ticket);
 
         let res = await createTicketService(ticket)
+        console.log("res: ", res);
+        
         if(res && res.status === 'OK') {
             await updateNumberOfSeatsService(trip?._id, quanlityBook)
             await props.searchTrips(location.state)

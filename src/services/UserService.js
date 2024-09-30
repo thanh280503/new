@@ -18,6 +18,11 @@ const updateUserService = (user) => {
   return axios.post(`/user/update-user-service`, user);
 };
 
+const verifyEmailService =  ({email, otp}) => {
+  return axios.post(`/user/verify-email`, {email, otp}) 
+}
+
+
 const deleteUserAdminService = (id) => {
   return axios.delete(`/user/delete-user/${id}`);
 };
@@ -71,5 +76,6 @@ export {
   logoutUserService,
   loginUserService,
   getDetailUserClient,
-  updateUserService
+  updateUserService,
+  verifyEmailService
 };

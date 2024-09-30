@@ -1,5 +1,5 @@
-import Footer from '../../npx create-react-app fe-bookbusticket-commerce'
 import Header from '../../Component/Header/Header'
+import Footer from '../../Component/Footer/Footer'
 import './RentalCar.scss'
 
 const RentalCar = () => {

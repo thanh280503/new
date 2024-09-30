@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import './VerifyEmail.scss'
 import { useState } from 'react'
-import { verifyEmailService } from "../../service/UserService"
+import { verifyEmailService } from "../../services/UserService"
 import { toast } from 'react-toastify'
 
 const VerifyEmail = () => {

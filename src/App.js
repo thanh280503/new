@@ -16,10 +16,15 @@ import TripDetail from './page/Admin/ManageTrip/TripDetail/TripDetail';
 import ManageTrip from './page/Admin/ManageTrip/ManageTrip';
 import Trips from './page/Trips/Trips';
 import Profile from './Component/Profile/Profile';
+import RentalCar from './page/RentalCar/RentalCar';
 import CreateDriver from './page/Admin/ManageDriver/CreateDriver/CreateDriver';
 import DetailDriver from './page/Admin/ManageDriver/DetailDriver/DetailDriver';
 import ManageDriver from './page/Admin/ManageDriver/ManageDriver';
 import UpdateDriver from './page/Admin/ManageDriver/UpdateDriver/UpdateDriver';
+import HistoryBookTicket from './page/HistoryBookTicket/HistoryBookTicket';
+import LoginSuccess from './Component/Information/LoginSuccess';
+import SendCodeEmail from './Component/Information/SendCodeEmail';
+import VerifyEmail from './Component/Information/VerifyEmail';
 
 function App() {
   return (
@@ -30,7 +35,13 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/trips' element={<Trips />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
-
+        <Route path="/rental-car" element={<RentalCar />}></Route>
+        <Route path="/book-ticket" element={<HistoryBookTicket />}></Route>
+        <Route path="/send-code-email" element={<SendCodeEmail />}></Route>
+        <Route path="/login-success/:id/:tokenLogin" element={<LoginSuccess />}></Route>
+        <Route path="/verify-email" element={<VerifyEmail />}></Route>
+        
+        
         <Route path='/admin' element={<Admin />}></Route>
         <Route path='/admin/manage-user' element={<ManageUser />}></Route>
         <Route path='/admin/manage-car' element={<ManageCar />}></Route>

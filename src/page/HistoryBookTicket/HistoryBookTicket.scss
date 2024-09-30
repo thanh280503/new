@@ -1,0 +1,114 @@
+.data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .table-manage-book-ticket {
+        width: 100%;
+        border-collapse: collapse;
+
+        tbody {
+            tr {
+                td {
+                    border: 1px solid black;
+                    text-align: center;
+                }
+                img {
+                    margin: 8px 0;
+                    object-fit: cover;
+                }
+            }
+
+            .car {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                    margin-bottom: 6px;
+                    border: 1px solid gray;
+                }
+            }
+        }
+
+        thead {
+            tr {
+                th {
+                    border: 1px solid black;
+                    text-align: center;
+                }
+            }
+        }
+
+        .update {
+            padding: 6px 25px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .delete {
+            padding: 6px 25px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+    }
+
+    .loading {
+        display: flex;
+        flex-direction: column; 
+        margin: 100px 0;
+        i {
+            font-size: 80px;
+            color: black;
+            margin-left: 80px;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.content-modal {
+    .item {
+        display: flex;
+        span {
+            &:first-child {
+                font-weight: 500;
+                margin-right: 6px;
+            }
+        }
+    }
+
+    .number {
+        margin: 8px 0;
+        span {
+            border: 1px solid gray;
+            padding: 1px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+    }
+}
+
+.modal-payment {
+    display: flex;
+    justify-content: center;
+    .text {
+        display: flex;
+        span {
+            &:first-child {
+                font-weight: 500;
+                margin-right: 6px;
+            }
+        }
+    }
+    .select-payment {
+        width: 200px;
+    }
+
+    .paypal {
+        width: 150px;
+        margin-top: 20px;
+        margin-right: 50px;
+    }
+}
