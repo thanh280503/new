@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+#Tên dự án: Website đặt vé xe khách liên tỉnh
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##1. Giới thiệu
 
-## Available Scripts
+Dự án này nhằm mục đích phát triển website quản lý bán vé xe buýt trực tuyến, cho phép người dùng tìm kiếm các chuyến xe, đặt vé và thanh toán trực tuyến. Website cung cấp các chức năng quản lý dành cho admin như thêm mới tài xế, xe, chuyến đi, quản lý người dùng và vé xe.
 
-In the project directory, you can run:
+##2. Công nghệ sử dụng
 
-### `npm start`
+- Ngôn ngữ lập trình: JavaScript
+- Thư viện Frontend: React.js
+- Các công nghệ khác: Redux, Axios, Bootstrap, Chart.js, và nhiều thư viện khác.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##3. Cấu trúc thư mục
+├──fe-bookbustickets-ecommerce
+│ ├──src
+│ │ ├──Component #Chứa đựng các component React
+│ │ ├──page #Chứa các trang của ứng dụng
+│ │ ├──services #Chứa các dịch vụ API
+│ │ ├──store #Chứa cấu hình Redux store
+│ │ ├── App.js #Component gốc của ứng dụng
+│ │ ├── index.js #Điểm khởi đầu của ứng dụng
+│ │ ├── reportWebVitals #Đo lường hiệu suất ứng dụng
+│ ├── .gitignore #Danh sách các tệp và thư mục được bỏ qua khi commit
+│ ├── package-lock.json #Khóa phiên bản phụ thuộc
+│ ├── package.json #Thông tin và phụ thuộc của dự án
+│ ├── README.md # Tài liệu hướng dẫn và thông tin dự án
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##4. Hướng dẫn cài đặt
 
-### `npm test`
+Yêu cầu hệ thống:
+Node.js v20 trở lên
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Cách cài đặt và chạy dự án
 
-### `npm run build`
+1. Clone dự án về máy:
+   ```bash
+   git clone https://github.com/dinhnguyen170203/fe-bookbustickets-ecommerce.git
+   cd fe-bookbustickets-ecommerce
+   ```
+2. Cài đặt các gói phụ thuộc:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Chạy ứng dụng:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   npm start
 
-### `npm run eject`
+4. Truy cập vào trình duyệt:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   http://localhost:3000

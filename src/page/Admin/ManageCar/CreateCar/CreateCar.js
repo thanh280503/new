@@ -49,12 +49,12 @@ const CreateCar = (props) => {
     let formData = new FormData();
     Object.keys(newCar).forEach((key) => formData.append(key, newCar[key]));
 
-    console.log("formData: ",formData);
-    
+    console.log('formData: ', formData);
+
     const res = await createNewCarAdminService(formData);
 
-    console.log("res: ", res);
-    
+    console.log('res: ', res);
+
     if (res && res.status === 'OK') {
       toast.success('Tạo mới xe thành công');
       setNewCar({
@@ -207,7 +207,7 @@ const CreateCar = (props) => {
                   placeholder='...'
                   onChange={handleImageChange}
                 />
-                {imagePreview && <img src={imagePreview} width={'100px'} height={'100px'} />}
+                {imagePreview && <img src={imagePreview} width={'100px'} height={'100px'} alt='' />}
               </div>
               <div className='mb-3 col-12'>
                 <label htmlFor='exampleFormControlInput1' className='form-label'>
