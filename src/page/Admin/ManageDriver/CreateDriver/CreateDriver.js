@@ -24,29 +24,33 @@ const CreateDriver = (props) => {
 
   useEffect(() => {}, []);
 
+  const isNumeric = (value) => {
+    return !isNaN(value) && !isNaN(parseFloat(value));
+  }
+
   const handleAddNewDriver = async () => {
-    console.log('newDriver: ', newDriver);
     let { idNumber, name, phoneNumber, address, personalInformation, workHistory, image } =
       newDriver;
-    if (
-      !idNumber ||
-      !name ||
-      !phoneNumber ||
-      !address ||
-      !personalInformation ||
-      !workHistory ||
-      !image
+    if (!idNumber || !name || !phoneNumber || !address || !personalInformation || !workHistory || !image
     ) {
       toast.error('Bạn chưa điền đầy đủ thông tin!');
       return;
     }
 
+    
+    if(idNumber.length !== 12 && !isNumeric(idNumber)) {
+      toast.error('Số căn cước công dân không đúng định dạng!');
+      return;
+    }
+
+    if((phoneNumber.length < 10 || phoneNumber.length < 11)  && !isNumeric(idNumber)) {
+      toast.error('Số điện thoại không đúng định dạng!');
+      return;
+    }
     let formData = new FormData();
     Object.keys(newDriver).forEach((key) => formData.append(key, newDriver[key]));
-    console.log('formData: ', formData);
 
     const res = await createDriverAdminService(formData);
-    console.log('res', res);
 
     if (res && res.status === 'OK') {
       toast.success('Thêm tài xế thành công');

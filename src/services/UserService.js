@@ -63,6 +63,9 @@ const logoutUserService =  () => {
   return axios.post(`/user/logout-user`) 
 }
 
+const lockUserAccount = (user) => {
+  return axios.post(`/user/lock-user-account`, user) 
+}
 
 export {
   getAllUserAdminService,
@@ -77,5 +80,6 @@ export {
   loginUserService,
   getDetailUserClient,
   updateUserService,
-  verifyEmailService
+  verifyEmailService,
+  lockUserAccount
 };

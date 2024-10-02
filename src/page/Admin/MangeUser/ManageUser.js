@@ -5,6 +5,7 @@ import SidebarAdmin from '../../../Component/SidebarAdmin/SidebarAdmin'
 import { createNewUserAdminService, 
         deleteUserAdminService, 
         getAllUserAdminService,
+        lockUserAccount,
         updateUserAdminService, 
         updateUserService
     } from '../../../services/UserService'
@@ -23,6 +24,10 @@ const ManageUser = () => {
     const [userUpdate, setUserUpdate] = useState({})
     const [idUserDelete, setIdUserUpdate] = useState("")
     const [userCompare, setUserCompare] = useState({})
+    const [lockUser, setLockUser] = useState({})
+    const [showLock, setShowLock] = useState(false)
+
+    const typeLock = ['minutes', 'hours', 'days']
 
     useEffect(() => {
         getAllUser()
@@ -48,6 +53,17 @@ const ManageUser = () => {
 
     const handleClose = () => {
         setShow(false)
+    }
+
+    const handleShowLock = (user) => {
+        
+        setShowLock(true)
+        setLockUser({...lockUser, usedId: user?._id})
+    }
+
+    const handleCloseLock = () => {
+        setShowLock(false)
+        setLockUser({})
     }
 
     const handleDeleteClose = () => {
@@ -141,6 +157,25 @@ const ManageUser = () => {
         }
     }
 
+    const handleLockUser = async () => {
+        const {usedId, lockDuration, type} = lockUser
+        if(!usedId, !lockDuration, !type){
+            toast.error("Bạn chưa điền đầy đủ thông tin!")
+            return
+        }
+
+        let res = await lockUserAccount(lockUser)
+        console.log("res: ", res);
+        
+        if(res && res.status === 'OK') {
+            toast.success("Khóa tài khoản thành công")
+            handleCloseLock()
+        }else {
+            toast.error("Khóa thất bại")
+        }
+        
+    }
+
     return (
         <div className='container-manage-user'>
             <AdminHeader />
@@ -176,7 +211,7 @@ const ManageUser = () => {
                                                 <td>{item.phone}</td>
                                                 <td>
                                                     <button className="btn btn-primary update"
-                                                        // onClick={() => handleShowUpdate(item)}
+                                                        onClick={() => handleShowLock(item)}
                                                     >Khóa</button>
                                                     <button className="btn btn-warning update"
                                                         onClick={() => handleShowUpdate(item)}
@@ -250,7 +285,57 @@ const ManageUser = () => {
                         </Modal.Footer>
                 </Modal>
             </div>
-
+            <div className="modal-lock">
+                <Modal show={showLock} onHide={handleCloseLock} >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Khóa tài khoản người dùng</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="row">
+                                <div className="mb-3 col-6 item">
+                                    <label htmlFor="exampleFormControlInput1" className="form-label">Loại</label>
+                                    <select 
+                                        selected={typeLock[0]}
+                                        onChange={(e) => setLockUser({...lockUser, type: e.target.value})}
+                                     >
+                                     {typeLock.map((item) => {
+                                    return (
+                                        <option key={item._id} value={item}>
+                                            {item}
+                                        </option>
+                                    )
+                                })
+                            }
+                        </select>
+                                </div>
+                                <div className="mb-3 col-6 item">
+                                    <label htmlFor="exampleFormControlInput1" className="form-label">Thời gian</label>
+                                    <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Mật khẩu" 
+                                        value={lockUser?.lockDuration}
+                                        onChange={(e) => setLockUser({...lockUser, lockDuration: e.target.value})}
+                                    />
+                                </div>
+                                <div className="mb-3 col-12 item">
+                                    <label htmlFor="exampleFormControlInput1" className="form-label">Lý do</label>
+                                    <textarea
+                                        name='Text1'
+                                        rows='4'
+                                        style={{ width: '100%' }}
+                                        onChange={(e) => setLockUser({ ...lockUser, lockReason: e.target.value })}
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseLock}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleLockUser}>
+                            Khóa 
+                        </Button>
+                        </Modal.Footer>
+                </Modal>
+            </div>
             {/* Modal update user */}
             <Modal show={showUpdate} onHide={handleCloseUpdate} >
                 <Modal.Header closeButton>
