@@ -58,7 +58,7 @@ const ManageUser = () => {
     const handleShowLock = (user) => {
         
         setShowLock(true)
-        setLockUser({...lockUser, usedId: user?._id})
+        setLockUser({...lockUser, userId: user?._id})
     }
 
     const handleCloseLock = () => {
@@ -158,8 +158,9 @@ const ManageUser = () => {
     }
 
     const handleLockUser = async () => {
-        const {usedId, lockDuration, type} = lockUser
-        if(!usedId, !lockDuration, !type){
+        const {userId, lockDuration, type} = lockUser
+        
+        if(!userId || !lockDuration || !type){
             toast.error("Bạn chưa điền đầy đủ thông tin!")
             return
         }
@@ -198,6 +199,7 @@ const ManageUser = () => {
                                         <th>Email</th>
                                         <th>Name</th>
                                         <th>Phone number</th>
+                                        <th>Trạng thái</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -209,6 +211,7 @@ const ManageUser = () => {
                                                 <td>{item.email}</td>
                                                 <td>{item.name}</td>
                                                 <td>{item.phone}</td>
+                                                <td>{!item?.accountLock?.isLocked ? "Đang hoạt động" : "Khóa"}</td>
                                                 <td>
                                                     <button className="btn btn-primary update"
                                                         onClick={() => handleShowLock(item)}

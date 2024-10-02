@@ -37,6 +37,7 @@ const CreateDriver = (props) => {
       return;
     }
 
+    console.log('idNumber.length !== 12', idNumber.length !== 12);
     
     if(idNumber.length !== 12 && !isNumeric(idNumber)) {
       toast.error('Số căn cước công dân không đúng định dạng!');
@@ -47,6 +48,7 @@ const CreateDriver = (props) => {
       toast.error('Số điện thoại không đúng định dạng!');
       return;
     }
+    
     let formData = new FormData();
     Object.keys(newDriver).forEach((key) => formData.append(key, newDriver[key]));
 

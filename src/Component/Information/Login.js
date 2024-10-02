@@ -36,6 +36,7 @@ const Login = (props) => {
         }
 
         let res = await loginUserService(loginUser)
+        
         if(res && res.status === "OK") {
             toast.success("Đăng nhập thành công!")
             setUser({})
@@ -53,7 +54,10 @@ const Login = (props) => {
             }else {
                 navigate("/")
             }
-        }else {
+        }else if(res && res.status === 'E1') {
+            toast.error(res.message)
+        }
+        else{
             toast.error("Email và mật khẩu không trùng khớp!")
         }
     }
