@@ -37,14 +37,12 @@ const CreateDriver = (props) => {
       return;
     }
 
-    console.log('idNumber.length !== 12', idNumber.length !== 12);
-    
-    if(idNumber.length !== 12 && !isNumeric(idNumber)) {
+    if(idNumber.length !== 12 || !isNumeric(idNumber)) {
       toast.error('Số căn cước công dân không đúng định dạng!');
       return;
     }
 
-    if((phoneNumber.length < 10 || phoneNumber.length < 11)  && !isNumeric(idNumber)) {
+    if((phoneNumber.length < 10 || phoneNumber.length < 11)   || !isNumeric(idNumber)) {
       toast.error('Số điện thoại không đúng định dạng!');
       return;
     }
