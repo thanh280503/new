@@ -25,6 +25,8 @@ import HistoryBookTicket from './page/HistoryBookTicket/HistoryBookTicket';
 import LoginSuccess from './Component/Information/LoginSuccess';
 import SendCodeEmail from './Component/Information/SendCodeEmail';
 import VerifyEmail from './Component/Information/VerifyEmail';
+import ManageTicket from './page/Admin/ManageTicket/ManageTicket';
+import DetailTicket from './page/Admin/ManageTicket/DetailCar/DetailTicket';
 
 function App() {
   return (
@@ -35,13 +37,11 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/trips' element={<Trips />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
-        <Route path="/rental-car" element={<RentalCar />}></Route>
-        <Route path="/book-ticket" element={<HistoryBookTicket />}></Route>
-        <Route path="/send-code-email" element={<SendCodeEmail />}></Route>
-        <Route path="/login-success/:id/:tokenLogin" element={<LoginSuccess />}></Route>
-        <Route path="/verify-email" element={<VerifyEmail />}></Route>
-        
-        
+        <Route path='/rental-car' element={<RentalCar />}></Route>
+        <Route path='/send-code-email' element={<SendCodeEmail />}></Route>
+        <Route path='/login-success/:id/:tokenLogin' element={<LoginSuccess />}></Route>
+        <Route path='/verify-email' element={<VerifyEmail />}></Route>
+
         <Route path='/admin' element={<Admin />}></Route>
         <Route path='/admin/manage-user' element={<ManageUser />}></Route>
         <Route path='/admin/manage-car' element={<ManageCar />}></Route>
@@ -57,6 +57,12 @@ function App() {
         <Route path='/admin/manage-driver/create' element={<CreateDriver />}></Route>
         <Route path='/admin/manage-driver/update' element={<UpdateDriver />}></Route>
         <Route path='/admin/manage-driver/detail' element={<DetailDriver />}></Route>
+
+        <Route path='/book-ticket' element={<HistoryBookTicket />}></Route>
+        <Route path='/book-ticket/detail' element={<DetailTicket />}></Route>
+
+        <Route path='/admin/manage-ticket' element={<ManageTicket />}></Route>
+        <Route path='/admin/manage-ticket/detail' element={<DetailTicket />}></Route>
       </Routes>
       <ToastContainer
         position='top-right'

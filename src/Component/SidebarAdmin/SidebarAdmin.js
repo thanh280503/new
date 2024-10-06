@@ -39,6 +39,12 @@ const SidebarAdmin = () => {
           </NavLink>
         </li>
         <li className='item'>
+          <NavLink to='/admin/manage-ticket'>
+            <i className='fa-solid fa-car'></i>
+            <span>vé xe</span>
+          </NavLink>
+        </li>
+        <li className='item'>
           <NavLink to='/admin/statistics'>
             <i className='fa-solid fa-dollar-sign'></i>
             <span>Thống kê</span>

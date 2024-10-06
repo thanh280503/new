@@ -1,24 +1,27 @@
-import axios from './CustomizeAxios'
+import axios from './CustomizeAxios';
 
-const createTicketService =  (ticket) => {
-    return axios.post(`/ticket/create-ticket`, ticket) 
-}
+const createTicketService = (ticket) => {
+  return axios.post(`/ticket/create-ticket`, ticket);
+};
 
-const getAllTicketUserService =  (id) => {
-    return axios.get(`/ticket/get-all-ticket-from-user/${id}`) 
-}
+const getAllTicketUserService = (id) => {
+  return axios.get(`/ticket/get-all-ticket-from-user/${id}`);
+};
 
-const deleteTicketUserService =  (id) => {
-    return axios.delete(`/ticket/delete-ticket/${id}`) 
-}
+const deleteTicketUserService = (id) => {
+  return axios.delete(`/ticket/delete-ticket/${id}`);
+};
 
-const updateTicketUserService =  (ticket) => {
-    return axios.post(`/ticket/update-ticket/`, ticket) 
-}
-
+const updateTicketUserService = (ticket) => {
+  return axios.post(`/ticket/update-ticket/`, ticket);
+};
+const getAllTicketService = (page) => {
+  return axios.get(`/ticket/get-all-ticket?page=${page}`);
+};
 export {
-    createTicketService,
-    getAllTicketUserService,
-    deleteTicketUserService,
-    updateTicketUserService
-}
+  createTicketService,
+  getAllTicketUserService,
+  deleteTicketUserService,
+  updateTicketUserService,
+  getAllTicketService,
+};

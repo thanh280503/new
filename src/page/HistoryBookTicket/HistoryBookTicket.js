@@ -12,6 +12,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { getAllPaymentService } from '../../services/TripService';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { useNavigate } from 'react-router-dom';
 
 const HistoryBookTicket = (props) => {
   const [data, setData] = useState([]);
@@ -25,6 +26,7 @@ const HistoryBookTicket = (props) => {
   const [valuePayment, setValuePayment] = useState('');
   const [numberBookUpdate, setNumberBookUpdate] = useState(0);
   const [sdkReady, setSdkReady] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (props.idUser) {
@@ -76,7 +78,9 @@ const HistoryBookTicket = (props) => {
       setDataPayments(res.data);
     }
   };
-
+  const handleDetailCar = (ticket) => {
+    navigate('/book-ticket/detail', { state: ticket });
+  };
   const handleUpdateTicket = async () => {
     if (numberBookUpdate === ticketUpdate?.numberOfBooked) {
       toast.error('Bạn chưa thay đổi gì!');
@@ -124,7 +128,7 @@ const HistoryBookTicket = (props) => {
   const addPaypalScript = async () => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = `https://www.paypal.com/sdk/js?client-id=AT7EBr6jVilRNlisLhqloAyPvmyrSsfCNrnofoJjKUvO3FQHE4m5MBPuNdaDsa8smSCZBYBsW44zlPA4`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=AXHkAOzgx6G9XrtUD0UQspMzVY0zPhwBWJ9d5FKdvTBB5p7tJzcZQyqjgnDNr6C4DTf7DtU5lTs6cfZb`;
     script.async = true;
     script.onload = () => {
       setSdkReady(true);
@@ -141,12 +145,24 @@ const HistoryBookTicket = (props) => {
   }, []);
 
   const onSuccessPaypal = async (details, data) => {
+    // Lấy thông tin thanh toán từ PayPal
+    let paymentInfo = {
+      id: data?.orderID, // ID giao dịch PayPal
+      payerName: details?.payer?.name?.given_name + ' ' + details?.payer?.name?.surname,
+      payerEmail: details?.payer?.email_address,
+      totalAmount: details?.purchase_units[0]?.amount?.value,
+      currency: details?.purchase_units[0]?.amount?.currency_code,
+      paymentStatus: details?.status,
+    };
+    console.log('paymentInfo', paymentInfo);
     let ticket = {
       id: ticketPayment?._id,
       ...ticketPayment,
       isPaid: true,
-      payment: valuePayment,
+      payment: valuePayment, // Hình thức thanh toán
+      paymentInfo: paymentInfo, // Thông tin từ PayPal
     };
+
     let res = await updateTicketUserService(ticket);
     if (res && res.status === 'OK') {
       toast.success('Bạn đã thanh toán thành công!');
@@ -211,7 +227,7 @@ const HistoryBookTicket = (props) => {
                         <td>
                           <button
                             className='btn btn-primary update'
-                            // onClick={() => handleDetailCar(item)}
+                            onClick={() => handleDetailCar(item)}
                           >
                             Chi tiết
                           </button>
@@ -324,7 +340,7 @@ const HistoryBookTicket = (props) => {
           <div className='row modal-payment'>
             <div className='col-6 text'>
               <span>Tổng tiền:</span>
-              <span>{ticketPayment?.totalPrice}</span>
+              <span>{ticketPayment?.totalPrice} VND</span>
             </div>
             <select className='col-6' onChange={(e) => setValuePayment(e.target.value)}>
               <option value={''}>Chọn hình thức thanh toán</option>
@@ -343,14 +359,16 @@ const HistoryBookTicket = (props) => {
                 <PayPalScriptProvider
                   options={{
                     clientId:
-                      'AT7EBr6jVilRNlisLhqloAyPvmyrSsfCNrnofoJjKUvO3FQHE4m5MBPuNdaDsa8smSCZBYBsW44zlPA4',
+                      'AXHkAOzgx6G9XrtUD0UQspMzVY0zPhwBWJ9d5FKdvTBB5p7tJzcZQyqjgnDNr6C4DTf7DtU5lTs6cfZb',
                   }}
                 >
                   <PayPalButtons
                     style={{ width: '200px' }}
-                    amount={ticketPayment?.totalPrice}
-                    // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-                    onSuccess={onSuccessPaypal}
+                    amount={Math.floor(ticketPayment?.totalPrice / 24000)}
+                    onSuccess={(details, data) => {
+                      console.log('Transaction completed by ', details);
+                      onSuccessPaypal(details, data);
+                    }}
                     onError={onErrorPaypal}
                   />
                 </PayPalScriptProvider>
