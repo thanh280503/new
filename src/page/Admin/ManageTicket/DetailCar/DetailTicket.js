@@ -3,6 +3,8 @@ import './DetailTicket.scss';
 import AdminFooter from '../../../../Component/AdminFooter/AdminFooter';
 import AdminHeader from '../../../../Component/AdminHeader/AdminHeader';
 import SidebarAdmin from '../../../../Component/SidebarAdmin/SidebarAdmin';
+import Header from '../../../../Component/Header/Header';
+import Footer from '../../../../Component/Footer/Footer';
 import { useState, useEffect } from 'react';
 
 const DetailTicket = () => {
@@ -24,9 +26,9 @@ const DetailTicket = () => {
 
   return (
     <div className='container-detail-ticket'>
-      <AdminHeader />
+      {location.pathname === '/admin/manage-ticket/detail' ? <AdminHeader /> : <Header />}
       <div className='content'>
-        <SidebarAdmin />
+        {location.pathname === '/admin/manage-ticket/detail' ? <SidebarAdmin /> : ''}
         <div className='right'>
           <div className='top'>
             <h3>Chi tiết xe</h3>
@@ -75,7 +77,7 @@ const DetailTicket = () => {
           )}
         </div>
       </div>
-      <AdminFooter />
+      {location.pathname === '/admin/manage-ticket/detail' ? <AdminFooter /> : <Footer />}
     </div>
   );
 };
