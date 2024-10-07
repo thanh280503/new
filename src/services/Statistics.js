@@ -1,7 +1,7 @@
 import axios from './CustomizeAxios';
 
 const getAllStatisticAdminService = () => {
-  return axios.get(`/statistics/get-all-statistics`);
+  return axios.get(`/statistic/get-all-statistics`);
 };
 
 export { getAllStatisticAdminService };
