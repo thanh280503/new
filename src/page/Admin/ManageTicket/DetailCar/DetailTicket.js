@@ -62,6 +62,10 @@ const DetailTicket = () => {
                     </p>
                   </div>
                   <div className='item'>
+                    <label>Thời gian:</label>
+                    <p>{new Date(ticket?.trip?.dayStart).toISOString().substring(0, 16)}</p>
+                  </div>
+                  <div className='item'>
                     <label>Giá:</label>
                     <p>{ticket?.totalPrice} VND</p>
                   </div>

@@ -28,7 +28,7 @@ const Trips = (props) => {
     }
     getPayments();
   }, [props.dataSearch]);
-
+  console.log('dataSearch', data);
   const getPayments = async () => {
     let res = await getAllPaymentService();
     if (res && res.status === 'OK') {
@@ -139,6 +139,9 @@ const Trips = (props) => {
                         <span>
                           {item?.departure?.value} - {item?.destination?.value}
                         </span>
+                      </div>
+                      <div>
+                        <span>{new Date(item?.dayStart).toISOString().substring(11, 16)}</span>
                       </div>
                       <div className='submit'>
                         <div>
