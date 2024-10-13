@@ -28,6 +28,7 @@ import VerifyEmail from './Component/Information/VerifyEmail';
 import ManageTicket from './page/Admin/ManageTicket/ManageTicket';
 import DetailTicket from './page/Admin/ManageTicket/DetailCar/DetailTicket';
 import Statistics from './page/Admin/Statistics/Statistics';
+import ForgotPassword from './Component/Information/ForgotPassword';
 
 function App() {
   return (
@@ -64,7 +65,9 @@ function App() {
 
         <Route path='/admin/manage-ticket' element={<ManageTicket />}></Route>
         <Route path='/admin/manage-ticket/detail' element={<DetailTicket />}></Route>
-        <Route path="/admin/statistics" element={<Statistics />}></Route>
+        <Route path='/admin/statistics' element={<Statistics />}></Route>
+
+        <Route path='/forgot-password' element={<ForgotPassword />}></Route>
       </Routes>
       <ToastContainer
         position='top-right'
