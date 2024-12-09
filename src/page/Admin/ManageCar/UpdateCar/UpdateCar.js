@@ -40,8 +40,9 @@ const UpdateCar = (props) => {
   const onClickUpdateCar = async () => {
     // if (car !== carCompare) {
     let res = await updateCarAdminService(idCar, car);
-    if (res && res === 'OK') {
+    if (res && res.status === 'OK') {
       toast.success('Cập nhật thành công');
+      navigation('/admin/manage-car');
       return;
     }
     // } else {
@@ -188,6 +189,7 @@ const UpdateCar = (props) => {
                 </label>
                 <textarea
                   name='Text1'
+                  value={car?.note}
                   rows='4'
                   style={{ width: '100%' }}
                   onChange={(e) => setCar({ ...car, note: e.target.value })}

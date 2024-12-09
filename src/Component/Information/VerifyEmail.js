@@ -21,7 +21,7 @@ const VerifyEmail = () => {
 
   const handleSendOtp = async () => {
     if (otp.length !== 6) {
-      toast.error('Chỉ 6 kí tự thôi bro!');
+      toast.error('Mã xác thực gồm 6 kí tự');
       return;
     }
 
@@ -33,6 +33,8 @@ const VerifyEmail = () => {
     if (res && res.status === 'OK') {
       toast.success('Bạn đã tạo tài khoản thành công!');
       navigation('/login');
+    }else{
+      toast.error('Nhập sai mã xác nhận')
     }
   };
   return (

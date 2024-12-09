@@ -15,7 +15,6 @@ const DetailTicket = () => {
   useEffect(() => {
     setTicket(location?.state);
   }, []);
-  console.log(ticket);
   const handleBack = () => {
     if (location?.pathname === '/admin/manage-ticket/detail') {
       navigation('/admin/manage-ticket');
@@ -63,7 +62,11 @@ const DetailTicket = () => {
                   </div>
                   <div className='item'>
                     <label>Thời gian:</label>
-                    <p>{new Date(ticket?.trip?.dayStart).toISOString().substring(0, 16)}</p>
+                    <p>
+  {ticket?.trip?.dayStart
+    ? new Date(ticket.trip.dayStart).toISOString().substring(11, 16)
+    : "Invalid Date"}
+</p>
                   </div>
                   <div className='item'>
                     <label>Giá:</label>

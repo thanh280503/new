@@ -352,7 +352,7 @@ const ManageUser = () => {
                   type='text'
                   className='form-control'
                   id='exampleFormControlInput1'
-                  placeholder='Mật khẩu'
+                  placeholder='...'
                   value={lockUser?.lockDuration}
                   onChange={(e) => setLockUser({ ...lockUser, lockDuration: e.target.value })}
                 />

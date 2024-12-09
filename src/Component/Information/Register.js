@@ -21,7 +21,7 @@ const Register = () => {
       return;
     }
 
-    const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    const reg = /^\w+([-.']\w+)*@\w+([-.]\w+)*\.(com|vn|org|edu)$/i; 
     const isCheckEmail = reg.test(email);
 
     if (!isCheckEmail) {
@@ -49,7 +49,11 @@ const Register = () => {
       toast.success('Xác thực email bạn nhé!');
       setNewUser({});
       navigate('/verify-email', { state: email });
-    } else {
+    }else if(res.message === 'User already exists'){
+      toast.error('Email đã tồn tại')
+    } 
+    
+    else {
       toast.error('Đăng ký thất bại!');
     }
   };
@@ -65,7 +69,7 @@ const Register = () => {
               <div className='item'>
                 <label>Email</label>
                 <input
-                  type='text'
+                  type='email'
                   placeholder='...'
                   value={newUser?.email}
                   onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
